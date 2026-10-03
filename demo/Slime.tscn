@@ -1,0 +1,66 @@
+[gd_scene load_steps=13 format=3 uid="uid://dtesnjfl64pth"]
+
+[ext_resource type="Script" uid="uid://lblemofrqlys" path="res://demo/slime.gd" id="1_slime"]
+[ext_resource type="Texture2D" uid="uid://ctjsvy03tn2h4" path="res://assets/kenney_tiny-dungeon/tile_0108.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://cbgm2gg2xwd8v" path="res://demo/detection.gd" id="3_detect"]
+[ext_resource type="Script" uid="uid://bo5y5sur160r6" path="res://state_machine/StateMachine.gd" id="4_sm"]
+[ext_resource type="Script" uid="uid://cltpevbf1xo0x" path="res://demo/states/idle_state.gd" id="5_idle"]
+[ext_resource type="Script" uid="uid://2w4teso7x0ie" path="res://demo/states/roam_state.gd" id="6_roam"]
+[ext_resource type="Script" uid="uid://bpbw4e6yvo10t" path="res://demo/states/chase_state.gd" id="7_chase"]
+[ext_resource type="Script" uid="uid://bv6lvdiyhqvwo" path="res://demo/states/attack_state.gd" id="8_attack"]
+[ext_resource type="Script" uid="uid://bq6gft1n8ogvy" path="res://demo/states/hitstun_state.gd" id="9_hitstun"]
+[ext_resource type="Script" uid="uid://dv0ysrnebxmxf" path="res://demo/states/death_state.gd" id="10_death"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 7.0
+
+[node name="Slime" type="CharacterBody2D" groups=["slimes"]]
+collision_layer = 4
+script = ExtResource("1_slime")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_body")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 4.0
+target_desired_distance = 4.0
+
+[node name="Detection" type="Node2D" parent="."]
+script = ExtResource("3_detect")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_sm")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("5_idle")
+
+[node name="Roam" type="Node" parent="StateMachine"]
+script = ExtResource("6_roam")
+
+[node name="Chase" type="Node" parent="StateMachine"]
+script = ExtResource("7_chase")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("8_attack")
+
+[node name="Hitstun" type="Node" parent="StateMachine"]
+script = ExtResource("9_hitstun")
+
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource("10_death")
+
+[node name="StateLabel" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -34.0
+offset_right = 40.0
+offset_bottom = -20.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 9
+text = "Idle"
+horizontal_alignment = 1
