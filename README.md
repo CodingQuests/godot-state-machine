@@ -218,4 +218,15 @@ with interactive lessons and real projects.
 - **[State Machine AI for 3D Enemies](https://codingquests.io/quests/state-machine-ai?utm_source=github&utm_medium=resource&utm_campaign=godot_state_machine)**
   takes the same idea into 3D. The first 4 lessons are free.
 
+## More Free Godot Resources from CodingQuests
+
+Other free, MIT-licensed Godot 4 projects that work well next to this one:
+
+- **[Enemy AI](https://github.com/CodingQuests/godot-enemy-ai)**: Four enemy types and a three-pattern boss on one shared state machine, with attacks you can read.
+- **[Hitbox and Hurtbox](https://github.com/CodingQuests/godot-hitbox-hurtbox)**: Health, hitbox and hurtbox components with one hit per swing, knockback, hit-stop and i-frames.
+- **[Top-Down Controller](https://github.com/CodingQuests/godot-top-down-controller)**: 8-direction movement, mouse aim, a dash with i-frames and a follow camera with shake.
+- **[Platformer Controller](https://github.com/CodingQuests/godot-platformer-controller)**: Coyote time, jump buffering, variable jump height, double jump, air dash and wall jump.
+
+All twelve are listed on the [CodingQuests GitHub profile](https://github.com/CodingQuests).
+
 Made by [CodingQuests](https://codingquests.io/?utm_source=github&utm_medium=resource&utm_campaign=godot_state_machine).
